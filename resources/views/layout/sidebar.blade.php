@@ -15,46 +15,19 @@
             </a>
             <ul class="submenu ">
                 <li class="submenu-item ">
-                    <a href="component-alert.html">Alert</a>
+                    <a href="component-alert.html">Pembayaran</a>
                 </li>
                 <li class="submenu-item ">
-                    <a href="component-badge.html">Badge</a>
+                    <a href="component-badge.html">Menu</a>
                 </li>
                 <li class="submenu-item ">
-                    <a href="component-breadcrumb.html">Breadcrumb</a>
+                    <a href="component-breadcrumb.html">Jenis Menu</a>
                 </li>
                 <li class="submenu-item ">
-                    <a href="component-button.html">Button</a>
+                    <a href="component-card.html">Detail Pembayaran</a>
                 </li>
                 <li class="submenu-item ">
-                    <a href="component-card.html">Card</a>
-                </li>
-                <li class="submenu-item ">
-                    <a href="component-carousel.html">Carousel</a>
-                </li>
-                <li class="submenu-item ">
-                    <a href="component-dropdown.html">Dropdown</a>
-                </li>
-                <li class="submenu-item ">
-                    <a href="component-list-group.html">List Group</a>
-                </li>
-                <li class="submenu-item ">
-                    <a href="component-modal.html">Modal</a>
-                </li>
-                <li class="submenu-item ">
-                    <a href="component-navs.html">Navs</a>
-                </li>
-                <li class="submenu-item ">
-                    <a href="component-pagination.html">Pagination</a>
-                </li>
-                <li class="submenu-item ">
-                    <a href="component-progress.html">Progress</a>
-                </li>
-                <li class="submenu-item ">
-                    <a href="component-spinner.html">Spinner</a>
-                </li>
-                <li class="submenu-item ">
-                    <a href="component-tooltip.html">Tooltip</a>
+                    <a href="component-carousel.html">Users</a>
                 </li>
             </ul>
         </li>
