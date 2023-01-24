@@ -3,7 +3,7 @@
         <li class="sidebar-title">Menu</li>
 
         <li class="sidebar-item  ">
-            <a href="#" class='sidebar-link'>
+            <a href="/dashboard" class='sidebar-link'>
                 <i class="bi bi-grid-fill"></i>
                 <span>Dashboard</span>
             </a>
@@ -15,19 +15,19 @@
             </a>
             <ul class="submenu ">
                 <li class="submenu-item ">
-                    <a href="component-alert.html">Pembayaran</a>
+                    <a href="/pembayaran">Pembayaran</a>
                 </li>
                 <li class="submenu-item ">
-                    <a href="component-badge.html">Menu</a>
+                    <a href="/menu">Menu</a>
                 </li>
                 <li class="submenu-item ">
-                    <a href="component-breadcrumb.html">Jenis Menu</a>
+                    <a href="/jenismenu">Jenis Menu</a>
                 </li>
                 <li class="submenu-item ">
-                    <a href="component-card.html">Detail Pembayaran</a>
+                    <a href="/detailpebayaran">Detail Pembayaran</a>
                 </li>
                 <li class="submenu-item ">
-                    <a href="component-carousel.html">Users</a>
+                    <a href="/users">Users</a>
                 </li>
             </ul>
         </li>

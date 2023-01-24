@@ -14,7 +14,7 @@ class JenisMenuController extends Controller
      */
     public function index()
     {
-        //
+        return view('dashboard.jenismenu.index');
     }
 
     /**

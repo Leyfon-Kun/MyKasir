@@ -15,7 +15,6 @@
     <link rel="stylesheet" href="{{ asset('template') }}/assets/css/app.css">
     <link rel="shortcut icon" href="{{ asset('template') }}/assets/images/favicon.svg" type="image/x-icon">
 </head>
-
 <body>
     <div id="app">
         <div id="sidebar" class="active">
@@ -34,7 +33,7 @@
                 </div>
 
                 @include('layout.sidebar')
-
+                
             </div>
         </div>
         <div id="main">
@@ -43,14 +42,12 @@
                     <i class="bi bi-justify fs-3"></i>
                 </a>
             </header>
-
             <div class="page-heading">
 
                 <!-- Main Content -->
                 @yield('content')
 
             </div>
-
             <footer>
                 <div class="footer clearfix mb-0 text-muted">
                     <div class="float-start">
