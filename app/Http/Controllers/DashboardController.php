@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\DetailPembayaran;
 use Illuminate\Http\Request;
 
-class DetailPembayaranController extends Controller
+class DashboardController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +13,7 @@ class DetailPembayaranController extends Controller
      */
     public function index()
     {
-        return view('dashboard.detailpembayaran.index');
+        return view('dashboard.index');
     }
 
     /**
@@ -41,10 +40,10 @@ class DetailPembayaranController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\DetailPembayaran  $detailPembayaran
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(DetailPembayaran $detailPembayaran)
+    public function show($id)
     {
         //
     }
@@ -52,10 +51,10 @@ class DetailPembayaranController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\DetailPembayaran  $detailPembayaran
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(DetailPembayaran $detailPembayaran)
+    public function edit($id)
     {
         //
     }
@@ -64,10 +63,10 @@ class DetailPembayaranController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\DetailPembayaran  $detailPembayaran
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, DetailPembayaran $detailPembayaran)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -75,10 +74,10 @@ class DetailPembayaranController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\DetailPembayaran  $detailPembayaran
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(DetailPembayaran $detailPembayaran)
+    public function destroy($id)
     {
         //
     }
