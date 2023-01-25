@@ -37,7 +37,12 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-
+                                            @foreach ($jenisMenu as $jm)
+                                                <tr>
+                                                    <td>{{ $jm->id }}</td>
+                                                    <td>{{ $jm->jenis }}</td>
+                                                </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>

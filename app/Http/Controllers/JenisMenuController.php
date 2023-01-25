@@ -14,7 +14,8 @@ class JenisMenuController extends Controller
      */
     public function index()
     {
-        return view('dashboard.jenismenu.index');
+        $jenisMenu = JenisMenu::paginate(20);
+        return view('dashboard.jenismenu.index', compact('jenisMenu'));
     }
 
     /**
