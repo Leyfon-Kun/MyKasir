@@ -21,9 +21,9 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 |
 */
 
-// Route::get('/', function () {
-//     return redirect('/login');
-// });
+Route::get('/', function () {
+    return redirect('/login');
+});
 
 Route::get('login', [AuthController::class, 'loginindex'])->name('login');
 Route::post('login', [AuthController::class, 'logincheck']);
