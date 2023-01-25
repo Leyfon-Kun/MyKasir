@@ -2,6 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DetailPembayaranController;
+use App\Http\Controllers\JenisMenuController;
+use App\Http\Controllers\MenuController;
+use App\Http\Controllers\PembayaranController;
+use App\Http\Controllers\UserController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
@@ -15,25 +21,26 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 |
 */
 
-Route::get('/', function () {
-    return view('dashboard.index');
-});
-
-// Route::get('login', [AuthController::class, 'loginindex']);
-// Route::post('login', [AuthControlller::class, 'logincheck']);
-// Route::get('logout', [AuthController::class, 'logout']);
-
-// Route::middleware(['auth'])->group(function () {
-//     Route::group(['prefix' => 'admin', 'middleware' => 'Role:admin'], function () {
-//         Route::resource('/dashboard', DashboardController::class);
-//         Route::resource('/detailpembayaran', DashboardController::class);
-//         Route::resource('/jenismenu', JenismenuController::class);
-//         Route::resource('/menu', MenuController::class);
-//         Route::resource('/pembayaran', PembayaranController::class);
-//     });
-
-//     Route::group(['prefix' => 'pegawai', 'middleware' => 'Role:pedawai'], function () {
-//         Route::resource('/pembayaran', [PembayaranController::class]);
-//         Route::resource('/menu', MenuController::class);
-//     });
+// Route::get('/', function () {
+//     return redirect('/login');
 // });
+
+Route::get('login', [AuthController::class, 'loginindex'])->name('login');
+Route::post('login', [AuthController::class, 'logincheck']);
+Route::get('logout', [AuthController::class, 'logout']);
+
+Route::middleware(['auth'])->group(function () {
+    Route::group(['prefix' => 'admin', 'middleware' => 'Role:admin'], function () {
+        Route::resource('/dashboard', DashboardController::class);
+        Route::resource('/detailpembayaran', DetailPembayaranController::class);
+        Route::resource('/jenismenu', JenisMenuController::class);
+        Route::resource('/menu', MenuController::class);
+        Route::resource('/pembayaran', PembayaranController::class);
+        Route::resource('/users', UserController::class);
+    });
+
+    // Route::group(['prefix' => 'pegawai', 'middleware' => 'Role:pedawai'], function () {
+    //     Route::resource('/pembayaran', [PembayaranController::class]);
+    //     Route::resource('/menu', MenuController::class);
+    // });
+});

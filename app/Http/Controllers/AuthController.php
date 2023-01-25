@@ -22,7 +22,6 @@ class AuthController extends Controller
 
         $checkAdmin = array_merge(Request()->except('_token'), ['role' => 'admin']);
         $checkUser = array_merge(Request()->except('_token'), ['role' => 'pegawai']);
-
         if (Auth::attempt($checkAdmin)) {
             return redirect('/admin/dashboard');
         } else if (Auth::attempt($checkUser)) {

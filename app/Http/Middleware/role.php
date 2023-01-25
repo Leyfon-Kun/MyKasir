@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class Access
+class role
 {
     /**
      * Handle an incoming request.
@@ -16,7 +16,7 @@ class Access
      */
     public function handle(Request $request, Closure $next, $role)
     {
-        if ($role[0] == auth()->user()->role) {
+        if ($role == auth()->user()->role) {
             return $next($request);
         } else {
             return redirect()->back();
