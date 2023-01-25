@@ -19,7 +19,7 @@
     </div>
     <div class="card">
         <div class="card-header">
-            <a href="#" class="btn btn-primary">Tambah Jenis Barang</a>
+            <a href="/admin/jenismenu/create" class="btn btn-primary">Tambah Jenis Barang</a>
         </div>
         <div class="card-body">
             <section class="section">
@@ -34,6 +34,7 @@
                                             <tr>
                                                 <th>No</th>
                                                 <th>Jenis Barang</th>
+                                                <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -41,6 +42,14 @@
                                                 <tr>
                                                     <td>{{ $jm->id }}</td>
                                                     <td>{{ $jm->jenis }}</td>
+                                                    <td>
+                                                        <a href="/admin/jenismenu/edit" class="btn icon btn-primary"><i class="bi bi-pencil"></i></a>
+                                                        <form action="/admin/jenismenu/{{ $jm->id }}" class="d-inline" method="post">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button class="btn icon btn-danger"><i class="bi bi-x"></i></button>
+                                                        </form>
+                                                    </td>
                                                 </tr>
                                             @endforeach
                                         </tbody>

@@ -25,7 +25,7 @@ class JenisMenuController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.jenismenu.create');
     }
 
     /**
@@ -36,7 +36,14 @@ class JenisMenuController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'jenis' => 'required'
+        ], [
+            'jenis.required' => 'Wajib Diisi'
+        ]);
+
+        JenisMenu::create($request->except('_token'));
+        return redirect('/admin/jenismenu');
     }
 
     /**
