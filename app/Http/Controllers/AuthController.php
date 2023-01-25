@@ -26,6 +26,6 @@ class AuthController extends Controller
             return redirect('/admin/dashboard');
         } else if (Auth::attempt($checkUser)) {
             return redirect('/dashboard');
-        }
+        } else return redirect()->back()->with('pesan', 'Username Atau Kata Sandi Salah');
     }
 }
