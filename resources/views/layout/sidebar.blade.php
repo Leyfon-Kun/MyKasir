@@ -17,17 +17,25 @@
         <li class="sidebar-item  has-sub">
             <a href="#" class='sidebar-link'>
                 <i class="bi bi-stack"></i>
-                <span>Work</span>
+                <span>Barang</span>
+            </a>
+            <ul class="submenu">
+                <li class="submenu-item ">
+                    <a href="/admin/menu">Barang</a>
+                </li>
+                <li class="submenu-item ">
+                    <a href="/admin/jenismenu">Jenis Barang</a>
+                </li>
+            </ul>
+        </li>
+        <li class="sidebar-item  has-sub">
+            <a href="#" class='sidebar-link'>
+                <i class="bi bi-basket-fill"></i>
+                <span>Pembayaran</span>
             </a>
             <ul class="submenu ">
                 <li class="submenu-item ">
                     <a href="/admin/pembayaran">Pembayaran</a>
-                </li>
-                <li class="submenu-item ">
-                    <a href="/admin/menu">Menu</a>
-                </li>
-                <li class="submenu-item ">
-                    <a href="/admin/jenismenu">Jenis Menu</a>
                 </li>
                 <li class="submenu-item ">
                     <a href="/admin/detailpembayaran">Detail Pembayaran</a>
