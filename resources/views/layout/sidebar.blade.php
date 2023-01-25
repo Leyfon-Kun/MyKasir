@@ -8,6 +8,12 @@
                 <span>Dashboard</span>
             </a>
         </li>
+        <li class="sidebar-item  ">
+            <a href="/admin/users" class='sidebar-link'>
+                <i class="bi bi-person-badge-fill"></i>
+                <span>Pegawai</span>
+            </a>
+        </li>
         <li class="sidebar-item  has-sub">
             <a href="#" class='sidebar-link'>
                 <i class="bi bi-stack"></i>
@@ -25,9 +31,6 @@
                 </li>
                 <li class="submenu-item ">
                     <a href="/admin/detailpembayaran">Detail Pembayaran</a>
-                </li>
-                <li class="submenu-item ">
-                    <a href="/admin/users">Users</a>
                 </li>
             </ul>
         </li>
