@@ -14,7 +14,8 @@ class MenuController extends Controller
      */
     public function index()
     {
-        return view('dashboard.menu.index');
+        $menu = Menu::Paginate(20);
+        return view('dashboard.menu.index', compact('menu'));
     }
 
     /**

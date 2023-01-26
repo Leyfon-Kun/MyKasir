@@ -17,14 +17,14 @@
         <li class="sidebar-item  has-sub">
             <a href="#" class='sidebar-link'>
                 <i class="bi bi-stack"></i>
-                <span>Barang</span>
+                <span>Menu</span>
             </a>
             <ul class="submenu">
                 <li class="submenu-item ">
-                    <a href="/admin/menu">Barang</a>
+                    <a href="/admin/menu">Menu</a>
                 </li>
                 <li class="submenu-item ">
-                    <a href="/admin/jenismenu">Jenis Barang</a>
+                    <a href="/admin/jenismenu">Jenis Menu</a>
                 </li>
             </ul>
         </li>

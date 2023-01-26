@@ -9,6 +9,6 @@ class JenisMenu extends Model
 {
     use HasFactory;
     protected $table = "jenis_menu";
-    protected $fillable = ['jenis'];
+    protected $fillable = ["jenis"];
     public $timestamps = false;
 }
