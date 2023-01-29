@@ -19,7 +19,7 @@
     </div>
     <div class="card">
         <div class="card-header">
-            <a href="#" class="btn btn-primary">Tambah Menu</a>
+            <a href="/admin/menu/create" class="btn btn-primary">Tambah Menu</a>
         </div>
         <div class="card-body">
             <section class="section">

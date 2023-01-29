@@ -14,8 +14,8 @@ class JenisMenuController extends Controller
      */
     public function index()
     {
-        $jenisMenu = JenisMenu::paginate(20);
-        return view('dashboard.jenismenu.index', compact('jenisMenu'));
+        $jenismenu = JenisMenu::paginate(20);
+        return view('dashboard.jenismenu.index', compact('jenismenu'));
     }
 
     /**
@@ -43,6 +43,7 @@ class JenisMenuController extends Controller
         ]);
 
         JenisMenu::create($request->except('_token'));
+        // @dd($request);
         return redirect('/admin/jenismenu');
     }
 
@@ -63,7 +64,7 @@ class JenisMenuController extends Controller
      * @param  \App\Models\JenisMenu  $jenisMenu
      * @return \Illuminate\Http\Response
      */
-    public function edit(JenisMenu $jenisMenu)
+    public function edit(JenisMenu $jenismenu)
     {
         //
     }
@@ -72,10 +73,10 @@ class JenisMenuController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\JenisMenu  $jenisMenu
+     * @param  \App\Models\JenisMenu  $jenismenu
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, JenisMenu $jenisMenu)
+    public function update(Request $request, JenisMenu $jenismenu)
     {
         //
     }
@@ -83,11 +84,13 @@ class JenisMenuController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\JenisMenu  $jenisMenu
+     * @param  \App\Models\JenisMenu  $jenismenu
      * @return \Illuminate\Http\Response
      */
-    public function destroy(JenisMenu $jenisMenu)
+    public function destroy(JenisMenu $jenismenu)
     {
-        //
+        $jenismenu->delete();
+        // @dd($jenismenu);
+        return redirect('/admin/jenismenu')->with('pesan', "Menu Berhasil Di Hapus");
     }
 }

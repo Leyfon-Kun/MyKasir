@@ -16,7 +16,7 @@
         </li>
         <li class="sidebar-item  has-sub">
             <a href="#" class='sidebar-link'>
-                <i class="bi bi-stack"></i>
+                <i class="bi bi-basket-fill"></i>
                 <span>Menu</span>
             </a>
             <ul class="submenu">
@@ -30,7 +30,7 @@
         </li>
         <li class="sidebar-item  has-sub">
             <a href="#" class='sidebar-link'>
-                <i class="bi bi-basket-fill"></i>
+                <i class="bi bi-stack"></i>
                 <span>Pembayaran</span>
             </a>
             <ul class="submenu ">

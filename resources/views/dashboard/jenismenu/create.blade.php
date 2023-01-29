@@ -19,20 +19,20 @@
     </div>
     <form action="/admin/jenismenu" method="POST">
         @csrf
-    <div class="card">
-        <div class="card-header">
-            <h4>Masukkan Jenis Menu</h4>
-        </div>
-        <div class="card-body">
-            <div class="form-group">
-                <label for="basicInput">Jenis Menu</label>
-                <input type="text" name="jenis" value="{{ old('jenis') }}" class="form-control" id="basicInput" placeholder="Jenis Menu">
-                @error('jenis')
-                    <div class="is-invalid">{{ $message }}</div>
-                @enderror
+        <div class="card">
+            <div class="card-header">
+                <h4>Masukkan Jenis Menu</h4>
             </div>
-                <button class="btn btn-primary mr-1" type="submit">Tambah</button>  
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="basicInput">Jenis Menu</label>
+                    <input type="text" name="jenis" value="{{ old('jenis') }}" class="form-control" id="basicInput" placeholder="Jenis Menu">
+                    @error('jenis')
+                        <div class="is-invalid">{{ $message }}</div>
+                    @enderror
+                </div>
+                    <button class="btn btn-primary mr-1" type="submit">Tambah</button>
+            </div>
         </div>
-    </div>
     </form>
 @endsection

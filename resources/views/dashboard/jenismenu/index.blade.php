@@ -34,11 +34,11 @@
                                             <tr>
                                                 <th>No</th>
                                                 <th>Jenis Menu</th>
-                                                <th>Action</th>
+                                                <th>Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($jenisMenu as $jm)
+                                            @foreach ($jenismenu as $jm)
                                                 <tr>
                                                     <td>{{ $jm->id }}</td>
                                                     <td>{{ $jm->jenis }}</td>

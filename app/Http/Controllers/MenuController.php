@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\JenisMenu;
 use App\Models\Menu;
 use Illuminate\Http\Request;
 
@@ -25,7 +26,8 @@ class MenuController extends Controller
      */
     public function create()
     {
-        //
+        $jenismenu = JenisMenu::all();
+        return view('dashboard.menu.create', compact('jenismenu'));
     }
 
     /**
@@ -36,7 +38,16 @@ class MenuController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Request()->validate([
+            'nama_menu' => 'required',
+            'stok' => 'required',
+            'harga' => 'required',
+            'id_jenis_menu' => 'required'
+        ]);
+
+        // @dd(Request()->except('_token'));
+        Menu::create(Request()->except('_token'));
+        return redirect('/admin/menu')->with('pesan', 'Menu Berhasi Di Tambahkan');
     }
 
     /**
@@ -81,6 +92,8 @@ class MenuController extends Controller
      */
     public function destroy(Menu $menu)
     {
-        //
+        $menu->delete();
+        // @dd($menu);
+        return redirect('/admin/menu')->with('pesan', "Menu Berhasil Di Hapus");
     }
 }
