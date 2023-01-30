@@ -28,4 +28,10 @@ class AuthController extends Controller
             return redirect('/dashboard');
         } else return redirect()->back()->with('pesan', 'Username Atau Kata Sandi Salah');
     }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect('login');
+    }
 }

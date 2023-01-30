@@ -1,7 +1,6 @@
 <div class="sidebar-menu">
     <ul class="menu">
         <li class="sidebar-title">Menu</li>
-
         <li class="sidebar-item  ">
             <a href="/admin/dashboard" class='sidebar-link'>
                 <i class="bi bi-grid-fill"></i>
@@ -41,6 +40,13 @@
                     <a href="/admin/detailpembayaran">Detail Pembayaran</a>
                 </li>
             </ul>
+        </li>
+        <li class="sidebar-title">Auth</li>
+        <li class="sidebar-item  ">
+            <a href="/logout" class='sidebar-link'>
+                <i class="bi bi-x-octagon-fill"></i>
+                <span>Logout</span>
+            </a>
         </li>
     </ul>
 </div>
