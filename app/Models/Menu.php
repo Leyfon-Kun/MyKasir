@@ -14,8 +14,8 @@ class Menu extends Model
     protected $hidden = ['id_jenis_menu'];
     public $timestamps = false;
 
-    public function jenismenu()
-    {
-        return $this->belongTo(JenisMenu::class, 'id_jenis_menu');
-    }
+    // public function jenismenu()
+    // {
+    //     return $this->belongTo(JenisMenu::class, 'id_jenis_menu');
+    // }
 }

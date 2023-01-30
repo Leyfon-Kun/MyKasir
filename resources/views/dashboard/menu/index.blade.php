@@ -43,17 +43,20 @@
                                         <tbody>
                                             @foreach ($menu as $m)
                                                 <tr>
-                                                    <td>{{ $m->id }}</td>
+                                                    <td>{{ $loop->iteration }}</td>
                                                     <td>{{ $m->nama_menu }}</td>
                                                     <td>{{ $m->stok }}</td>
                                                     <td>{{ $m->harga }}</td>
                                                     <td>{{ $m->id_jenis_menu }}</td>
                                                     <td>
-                                                        <a href="/admin/menu/edit" class="btn icon btn-primary"><i class="bi bi-pencil"></i></a>
-                                                        <form action="/admin/menu/{{ $m->id }}" class="d-inline" method="post">
+                                                        <a href="/admin/menu/edit" class="btn icon btn-primary"><i
+                                                                class="bi bi-pencil"></i></a>
+                                                        <form action="/admin/menu/{{ $m->id }}" class="d-inline"
+                                                            method="post">
                                                             @csrf
                                                             @method('DELETE')
-                                                            <button class="btn icon btn-danger"><i class="bi bi-x"></i></button>
+                                                            <button class="btn icon btn-danger"><i
+                                                                    class="bi bi-x"></i></button>
                                                         </form>
                                                     </td>
                                                 </tr>

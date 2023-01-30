@@ -41,11 +41,11 @@
                 </li>
             </ul>
         </li>
-        <li class="sidebar-title">Auth</li>
+        <li class="sidebar-title">Autentikasi</li>
         <li class="sidebar-item  ">
             <a href="/logout" class='sidebar-link'>
                 <i class="bi bi-x-octagon-fill"></i>
-                <span>Logout</span>
+                <span>Keluar</span>
             </a>
         </li>
     </ul>

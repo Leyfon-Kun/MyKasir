@@ -12,8 +12,8 @@ class JenisMenu extends Model
     protected $fillable = ['jenis'];
     public $timestamps = false;
 
-    public function menu()
-    {
-        return $this->hasMany(Menu::class, 'id_jenis_menu');
-    }
+    // public function menu()
+    // {
+    //     return $this->hasMany(Menu::class, 'id_jenis_menu');
+    // }
 }
