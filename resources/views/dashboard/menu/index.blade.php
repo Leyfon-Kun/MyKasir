@@ -47,7 +47,7 @@
                                                     <td>{{ $m->nama_menu }}</td>
                                                     <td>{{ $m->stok }}</td>
                                                     <td>{{ $m->harga }}</td>
-                                                    <td>{{ $m->id_jenis_menu }}</td>
+                                                    <td>{{ $m->jenis->jenis }}</td>
                                                     <td>
                                                         <a href="/admin/menu/edit" class="btn icon btn-primary"><i
                                                                 class="bi bi-pencil"></i></a>
