@@ -26,9 +26,24 @@ class PembayaranController extends Controller
      */
     public function search()
     {
-        $barang = Menu::where('kode_barang', Request()->kode_barang)->first();
+        $menu = Menu::where('kode_menu', Request()->kode_menu)->first();
         if(session('id_pembayaran')){
-            $cek = DB::table('detail_pembayaran')->where('id_pebayaran', session('id_pembayaran'))->where('id_menu', $barang->id)->first();
+
+            $cek = DB::table('detail_pembayaran')->where('id_pebayaran', session('id_pembayaran'))->where('id_menu', $menu->id)->first();
+
+            if($cek === null) {
+                DB::table('detail_pembayaran')->insert([
+                    'id_menu'=>$menu->id,
+                    'id_pembayaran'=>session('id_pembayaran'),
+                    'total_menu'=>'1',
+                    'subtotal'=>$menu->harga
+                ]);
+            }else{
+                DB::table('detail_pembayaran')->where('id', $cek->id)->update([
+                    'total_menu'=>$cek->total_menu+1,
+                    'subtotal'=>($cek->subtotal+1)*$menu->harga
+                ]);
+            }
         }
 
     }

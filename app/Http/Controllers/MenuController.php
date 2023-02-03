@@ -43,7 +43,12 @@ class MenuController extends Controller
         'stok' => 'required',
         'harga' => 'required',
         'id_jenis_menu' => 'required'
-       ]);
+        ],[
+        'nama_menu.required' => 'Harap Masukkan Nama Menu',
+        'stok.required' => 'Harap Masukkan Stok',
+        'harga.required' => 'Harap Masukkan Harga',
+        'id_jenis_menu.required' => 'Harap Tentukan Jenis Barang'
+        ]);
 
        $random = mt_rand(123452342, 999999999);
 
