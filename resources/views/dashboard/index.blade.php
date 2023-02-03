@@ -1,17 +1,17 @@
 @extends('layout.index')
 
 @section('content')
-    <header class="mb-3">
+    {{-- <header class="mb-3">
         <a href="#" class="burger-btn d-block d-xl-none">
             <i class="bi bi-justify fs-3"></i>
         </a>
-    </header>
+    </header> --}}
     <div class="page-heading">
         <h3>Profile Statistics</h3>
     </div>
     <div class="page-content">
         <section class="row">
-            <div class="row-12 col-lg-12">
+            <div class="row-12 col-lg-9">
                 <div class="row">
                     <div class="col-6 col-lg-3 col-md-6">
                         <div class="card">
@@ -26,7 +26,7 @@
                                         <h6 class="text-muted font-semibold">
                                             Pegawai
                                         </h6>
-                                        <h6 class="font-extrabold mb-0">112.000</h6>
+                                        <h6 class="font-extrabold mb-0">{{ $pegawai }}</h6>
                                     </div>
                                 </div>
                             </div>
@@ -43,7 +43,7 @@
                                     </div>
                                     <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
                                         <h6 class="text-muted font-semibold">Menu</h6>
-                                        <h6 class="font-extrabold mb-0">183.000</h6>
+                                        <h6 class="font-extrabold mb-0">{{ $menu }}</h6>
                                     </div>
                                 </div>
                             </div>
@@ -59,8 +59,8 @@
                                         </div>
                                     </div>
                                     <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                                        <h6 class="text-muted font-semibold">Following</h6>
-                                        <h6 class="font-extrabold mb-0">80.000</h6>
+                                        <h6 class="text-muted font-semibold">?</h6>
+                                        <h6 class="font-extrabold mb-0"></h6>
                                     </div>
                                 </div>
                             </div>
@@ -76,16 +76,42 @@
                                         </div>
                                     </div>
                                     <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                                        <h6 class="text-muted font-semibold">Saved Post</h6>
-                                        <h6 class="font-extrabold mb-0">112</h6>
+                                        <h6 class="text-muted font-semibold">?</h6>
+                                        <h6 class="font-extrabold mb-0"></h6>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
+            <div class="row-12 col-lg-3">
+                <div class="card">
+                    <div class="row">
+                    <div class="card-body py-4 px-5">
+                        <div class="d-flex align-items-center">
+                            <div class="avatar avatar-xl">
+                                <img src="{{ asset('template') }}/assets/images/faces/1.jpg" alt="Face 1">
+                            </div>
+                            <div class="ms-3 name">
+                                <h5 class="font-bold">{{ Auth()->user()->nama }}</h5>
+                                <h6 class="text-muted mb-0">{{ Auth()->user()->role }}</h6>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            {{-- <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Bar Chart</h4>
+                    </div>
+                    <div class="card-body">
+                        <div id="bar"></div>
+                    </div>
+                </div>
+            </div> --}}
         </section>
     </div>
 @endsection

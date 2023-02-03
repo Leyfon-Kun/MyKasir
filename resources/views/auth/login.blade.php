@@ -18,9 +18,15 @@
             <div class="col-lg-5 col-12">
                 <div id="auth-left">
                     <div class="auth-logo">
-                        <a href="/login"><img src="{{ asset('template') }}/assets/images/logo/logo.png"
-                                alt="Logo"></a>
+                        <a href="/login">
+                            <img src="{{ asset('template') }}/assets/images/logo/logo.png"alt="Logo">
+                        </a>
                     </div>
+                        @if(Session::has('pesan'))
+                            <div class="alert alert-danger alert-dismissible show fade">
+                                {{ Session::get('pesan') }}
+                            </div>
+                        @endif
                     <h1 class="auth-title">Login</h1>
                     <p class="auth-subtitle mb-5">Login MyKasir Dengan Data Yang Sudah Ada.</p>
                     <form method="POST" action="/login">
@@ -32,6 +38,11 @@
                                 <i class="bi bi-person"></i>
                             </div>
                         </div>
+                        @error('username')
+                            <div class="alert alert-danger alert-dismissible show fade">
+                                {{ $message }}
+                            </div>
+                        @enderror
                         <div class="form-group position-relative has-icon-left mb-4">
                             <input type="password" name="password" class="form-control form-control-xl"
                                 placeholder="Password">
@@ -39,6 +50,11 @@
                                 <i class="bi bi-shield-lock"></i>
                             </div>
                         </div>
+                        @error('password')
+                            <div class="alert alert-danger alert-dismissible show fade">
+                                {{ $message }}
+                            </div>
+                        @enderror
                         <button class="btn btn-primary btn-block btn-lg shadow-lg mt-5">Login</button>
                     </form>
                 </div>

@@ -30,17 +30,15 @@ Route::post('login', [AuthController::class, 'logincheck']);
 Route::get('logout', [AuthController::class, 'logout']);
 
 Route::middleware(['auth'])->group(function () {
+
     Route::group(['prefix' => 'admin', 'middleware' => 'Role:admin'], function () {
-        Route::resource('/dashboard', DashboardController::class);
-        Route::resource('/detailpembayaran', DetailPembayaranController::class);
-        Route::resource('/jenismenu', JenisMenuController::class);
-        Route::resource('/menu', MenuController::class);
-        Route::resource('/pembayaran', PembayaranController::class);
         Route::resource('/users', UserController::class);
     });
 
-    // Route::group(['prefix' => 'pegawai', 'middleware' => 'Role:pedawai'], function () {
-    //     Route::resource('/pembayaran', [PembayaranController::class]);
-    //     Route::resource('/menu', MenuController::class);
-    // });
+    Route::resource('/dashboard', DashboardController::class);
+    Route::resource('/detailpembayaran', DetailPembayaranController::class);
+    Route::resource('/jenismenu', JenisMenuController::class);
+    Route::resource('/menu', MenuController::class);
+    Route::resource('/pembayaran', PembayaranController::class);
+
 });

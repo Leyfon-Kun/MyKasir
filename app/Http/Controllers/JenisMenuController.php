@@ -39,12 +39,12 @@ class JenisMenuController extends Controller
         $request->validate([
             'jenis' => 'required'
         ], [
-            'jenis.required' => 'Wajib Diisi'
+            'jenis.required' => 'Harap Masukkan Jenis Menu'
         ]);
 
         JenisMenu::create($request->except('_token'));
         // @dd($request);
-        return redirect('/admin/jenismenu');
+        return redirect('/jenismenu');
     }
 
     /**
@@ -66,7 +66,7 @@ class JenisMenuController extends Controller
      */
     public function edit(JenisMenu $jenismenu)
     {
-        //
+        return view('dashboard.jenismenu.edit', compact('jenismenu'));
     }
 
     /**
@@ -78,7 +78,14 @@ class JenisMenuController extends Controller
      */
     public function update(Request $request, JenisMenu $jenismenu)
     {
-        //
+        $request->validate([
+            'jenis' => 'required'
+        ],[
+            'jenis.required' => 'Harap Masukkan Jenis Menu'
+        ]);
+
+        $jenismenu -> update($request->except('_token'));
+        return redirect('/jenismenu');
     }
 
     /**
@@ -91,6 +98,6 @@ class JenisMenuController extends Controller
     {
         $jenismenu->delete();
         // @dd($jenismenu);
-        return redirect('/admin/jenismenu')->with('pesan', "Menu Berhasil Di Hapus");
+        return redirect('/jenismenu')->with('pesan', "Menu Berhasil Di Hapus");
     }
 }

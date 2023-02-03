@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\Menu;
 
 class DashboardController extends Controller
 {
@@ -13,7 +15,9 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('dashboard.index');
+        $pegawai = User::count();
+        $menu = Menu::count();
+        return view('dashboard.index', compact('pegawai', 'menu'));
     }
 
     /**

@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-12 col-md-6 order-md-1 order-last">
                 <h3>Menu</h3>
-                <p class="text-subtitle text-muted">Multiple form layout you can use</p>
+                <p class="text-subtitle text-muted">Data Menu</p>
             </div>
             <div class="col-12 col-md-6 order-md-2 order-first">
                 <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
@@ -19,7 +19,7 @@
     </div>
     <div class="card">
         <div class="card-header">
-            <a href="/admin/menu/create" class="btn btn-primary">Tambah Menu</a>
+            <a href="/menu/create" class="btn btn-primary">Tambah Menu</a>
         </div>
         <div class="card-body">
             <section class="section">
@@ -34,6 +34,7 @@
                                             <tr>
                                                 <th>No</th>
                                                 <th>Nama Menu</th>
+                                                <th>Kode Menu</th>
                                                 <th>Stok</th>
                                                 <th>Harga</th>
                                                 <th>Jenis Menu</th>
@@ -45,13 +46,15 @@
                                                 <tr>
                                                     <td>{{ $loop->iteration }}</td>
                                                     <td>{{ $m->nama_menu }}</td>
+                                                    <td>{{ $m->kode_menu }}</td>
                                                     <td>{{ $m->stok }}</td>
                                                     <td>{{ $m->harga }}</td>
-                                                    <td>{{ $m->id_jenis_menu }}</td>
+                                                    <td>{{ $m->jenis->jenis }}</td>
                                                     <td>
-                                                        <a href="/admin/menu/edit" class="btn icon btn-primary"><i
-                                                                class="bi bi-pencil"></i></a>
-                                                        <form action="/admin/menu/{{ $m->id }}" class="d-inline"
+                                                        <a href="/menu/{{ $m->id }}/edit" class="btn icon btn-primary">
+                                                            <i class="bi bi-pencil"></i>
+                                                        </a>
+                                                        <form action="/menu/{{ $m->id }}" class="d-inline"
                                                             method="post">
                                                             @csrf
                                                             @method('DELETE')

@@ -16,15 +16,17 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        User::create([
-            'username' => 'admin',
-            'password' => Hash::make('admin123'),
-            'role' => 'admin'
-        ]);
-        User::create([
-            'username' => 'pegawai',
-            'password' => Hash::make('pegawai123'),
-            'role' => 'pegawai'
-        ]);
+        // User::create([
+        //     'nama' => 'Katoh',
+        //     'username' => 'admin',
+        //     'password' => Hash::make('admin123'),
+        //     'role' => 'admin'
+        // ]);
+        // User::create([
+        //     'nama' => 'Hengky',
+        //     'username' => 'pegawai',
+        //     'password' => Hash::make('pegawai123'),
+        //     'role' => 'pegawai'
+        // ]);
     }
 }

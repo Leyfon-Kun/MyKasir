@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jan 30, 2023 at 04:47 AM
+-- Generation Time: Feb 03, 2023 at 04:24 AM
 -- Server version: 8.0.30
--- PHP Version: 8.1.10
+-- PHP Version: 7.4.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -51,8 +51,9 @@ CREATE TABLE `jenis_menu` (
 --
 
 INSERT INTO `jenis_menu` (`id`, `jenis`) VALUES
-(4, 'Makanan'),
-(5, 'Minuman');
+(11, 'Makanan'),
+(12, 'Minuman'),
+(13, 'Camilan');
 
 -- --------------------------------------------------------
 
@@ -63,10 +64,18 @@ INSERT INTO `jenis_menu` (`id`, `jenis`) VALUES
 CREATE TABLE `menu` (
   `id` int NOT NULL,
   `nama_menu` varchar(255) DEFAULT NULL,
+  `kode_menu` int NOT NULL,
   `stok` int DEFAULT NULL,
   `harga` float DEFAULT NULL,
   `id_jenis_menu` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `menu`
+--
+
+INSERT INTO `menu` (`id`, `nama_menu`, `kode_menu`, `stok`, `harga`, `id_jenis_menu`) VALUES
+(3, 'Potabee', 843323523, 50, 8000, 13);
 
 -- --------------------------------------------------------
 
@@ -78,7 +87,7 @@ CREATE TABLE `pembayaran` (
   `id` int NOT NULL,
   `id_kasir` int DEFAULT NULL,
   `total_pembayaran` float DEFAULT NULL,
-  `totol_kembalian` float DEFAULT NULL,
+  `total_kembalian` float DEFAULT NULL,
   `total_harga` float DEFAULT NULL,
   `tgl_pembayaran` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -91,6 +100,7 @@ CREATE TABLE `pembayaran` (
 
 CREATE TABLE `users` (
   `id` int NOT NULL,
+  `nama` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `username` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
   `role` enum('admin','pegawai') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL
@@ -100,9 +110,10 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `password`, `role`) VALUES
-(6, 'admin', '$2y$10$.eyeihdXD0m1bXZyojiP6OOCHLmcbCEqRx0ZfJ4qPahyCu3NvXfee', 'admin'),
-(7, 'pegawai', '$2y$10$OfW1rw1n3XJgfHntPMW3e.Nn5hEn6UB72aIz2A.3JbICIDj3ZtUVi', 'pegawai');
+INSERT INTO `users` (`id`, `nama`, `username`, `password`, `role`) VALUES
+(8, 'Katoh', 'admin', '$2y$10$h/26mzBYX85yred6SVu71u25HdOHNji2/Um5PyKjXUUieMd5ZE/.W', 'admin'),
+(9, 'Hengky', 'pegawai', '$2y$10$pmRLnlOAffEB3EMJGbZX5eBNvj2J7IzLLqlJbh7WvdS.qqjBCwdqq', 'pegawai'),
+(14, 'usdin', 'admin', '$2y$10$XjZImiaa8qn7EJYogHPPqO/1FoBgrtuLlePVM/ipdc3lqAkG5S.E2', 'pegawai');
 
 --
 -- Indexes for dumped tables
@@ -156,13 +167,13 @@ ALTER TABLE `detail_pembayaran`
 -- AUTO_INCREMENT for table `jenis_menu`
 --
 ALTER TABLE `jenis_menu`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `pembayaran`
@@ -174,7 +185,7 @@ ALTER TABLE `pembayaran`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Constraints for dumped tables

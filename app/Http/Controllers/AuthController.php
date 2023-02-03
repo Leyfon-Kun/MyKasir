@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\array_marge;
 
 class AuthController extends Controller
 {
@@ -18,13 +17,17 @@ class AuthController extends Controller
         Request()->validate([
             'username' => 'required',
             'password' => 'required'
+        ], [
+            'username.required' => 'Harap Isi  Username',
+            'password.required' => 'Harap Isi Password'
         ]);
 
-        $checkAdmin = array_merge(Request()->except('_token'), ['role' => 'admin']);
-        $checkUser = array_merge(Request()->except('_token'), ['role' => 'pegawai']);
-        if (Auth::attempt($checkAdmin)) {
-            return redirect('/admin/dashboard');
-        } else if (Auth::attempt($checkUser)) {
+        $admin = array_merge(Request()->except('_token'), ['role' => 'admin']);
+        $pegawai = array_merge(Request()->except('_token'), ['role' => 'pegawai']);
+
+        if (Auth::attempt($admin)) {
+            return redirect('/dashboard');
+        } else if (Auth::attempt($pegawai)) {
             return redirect('/dashboard');
         } else return redirect()->back()->with('pesan', 'Username Atau Kata Sandi Salah');
     }

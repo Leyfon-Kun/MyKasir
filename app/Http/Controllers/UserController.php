@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -13,7 +15,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('dashboard.users.index');
+        $users = User::paginate(20);
+        return view('dashboard.users.index', compact('users'));
     }
 
     /**
@@ -23,7 +26,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.users.create');
     }
 
     /**
@@ -34,7 +37,23 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nama' => 'required',
+            'username' => 'required',
+            'password' => 'required',
+        ]);
+
+        $data = [
+            'nama' => Request()->nama,
+            'username' => Request()->username,
+            'password' => Hash::make(Request()->password),
+            'role' => 'pegawai'
+        ];
+
+        // @dd($data);
+
+        User::create($data);
+        return redirect('/admin/users');
     }
 
     /**
@@ -54,9 +73,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $users, $id)
     {
-        //
+        $users = User::find($id);
+        return view('dashboard.users.edit', compact('users'));
     }
 
     /**
@@ -66,9 +86,25 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $users, $id)
     {
-        //
+        $request->validate([
+            'nama' => 'required',
+            'username' => 'required',
+            // 'password' => 'required',
+        ]);
+
+        // $data = [
+        //     'nama' => Request()->nama,
+        //     'username' => Request()->username,
+        //     'password' => Hash::make(Request()->password),
+        //     'role' => 'pegawai'
+        // ];
+
+        // @dd($request);
+
+        $users -> update($request->except('_token'));
+        return redirect('/admin/users');
     }
 
     /**
@@ -77,8 +113,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+        $user->delete();
+        return redirect('/admin/users')->with('pesan', 'Akun Berhasil Di Tambahkan');
     }
 }

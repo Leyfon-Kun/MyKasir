@@ -17,7 +17,7 @@
             </div>
         </div>
     </div>
-    <form action="/admin/menu" method="POST">
+    <form action="/menu" method="POST">
         @csrf
         <div class="card">
             <div class="card-header">
@@ -26,9 +26,9 @@
             <div class="card-body">
                 <div class="form-group">
                     <label for="basicInput">Nama Menu</label>
-                    <input type="text" name="nama_menu" value="{{ old('jenis') }}" class="form-control" id="basicInput"
+                    <input type="text" name="nama_menu" value="{{ old('nama_menu') }}" class="form-control" id="basicInput"
                         placeholder="Jenis Barang">
-                    @error('jenis')
+                    @error('nama_menu')
                         <div class="is-invalid">{{ $message }}</div>
                     @enderror
                 </div>
@@ -58,6 +58,9 @@
                             @endforeach
                         </select>
                     </fieldset>
+                    @error('id_jenis_menu')
+                        <div class="is-invalid">{{ $message }}</div>
+                    @enderror
                 </div>
                 <button class="btn btn-primary mr-1" type="submit">Tambah</button>
             </div>

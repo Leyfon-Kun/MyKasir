@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Menu;
 use App\Models\Pembayaran;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PembayaranController extends Controller
 {
@@ -22,9 +24,13 @@ class PembayaranController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function search()
     {
-        //
+        $barang = Menu::where('kode_barang', Request()->kode_barang)->first();
+        if(session('id_pembayaran')){
+            $cek = DB::table('detail_pembayaran')->where('id_pebayaran', session('id_pembayaran'))->where('id_menu', $barang->id)->first();
+        }
+
     }
 
     /**
