@@ -19,7 +19,7 @@
     </div>
     <div class="card">
         <div class="card-header">
-            <a href="/menu/create" class="btn btn-primary">Tambah Menu</a>
+            <a href="/admin/menu/create" class="btn btn-primary">Tambah Menu</a>
         </div>
         <div class="card-body">
             <section class="section">
@@ -51,10 +51,10 @@
                                                     <td>{{ $m->harga }}</td>
                                                     <td>{{ $m->jenis->jenis }}</td>
                                                     <td>
-                                                        <a href="/menu/{{ $m->id }}/edit" class="btn icon btn-primary">
+                                                        <a href="/admin/menu/{{ $m->id }}/edit" class="btn icon btn-primary">
                                                             <i class="bi bi-pencil"></i>
                                                         </a>
-                                                        <form action="/menu/{{ $m->id }}" class="d-inline"
+                                                        <form action="/admin/menu/{{ $m->id }}" class="d-inline"
                                                             method="post">
                                                             @csrf
                                                             @method('DELETE')

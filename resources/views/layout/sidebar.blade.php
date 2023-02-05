@@ -14,21 +14,21 @@
                     <span>Pegawai</span>
                 </a>
             </li>
+            <li class="sidebar-item  has-sub">
+                <a href="#" class='sidebar-link'>
+                    <i class="bi bi-basket-fill"></i>
+                    <span>Menu</span>
+                </a>
+                <ul class="submenu">
+                    <li class="submenu-item ">
+                        <a href="/admin/menu">Menu</a>
+                    </li>
+                    <li class="submenu-item ">
+                        <a href="/admin/jenismenu">Jenis Menu</a>
+                    </li>
+                </ul>
+            </li>
         @endif
-        <li class="sidebar-item  has-sub">
-            <a href="#" class='sidebar-link'>
-                <i class="bi bi-basket-fill"></i>
-                <span>Menu</span>
-            </a>
-            <ul class="submenu">
-                <li class="submenu-item ">
-                    <a href="/menu">Menu</a>
-                </li>
-                <li class="submenu-item ">
-                    <a href="/jenismenu">Jenis Menu</a>
-                </li>
-            </ul>
-        </li>
         <li class="sidebar-item  has-sub">
             <a href="#" class='sidebar-link'>
                 <i class="bi bi-stack"></i>

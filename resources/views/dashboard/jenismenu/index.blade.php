@@ -19,7 +19,7 @@
     </div>
     <div class="card">
         <div class="card-header">
-            <a href="/jenismenu/create" class="btn btn-primary">Tambah Jenis Menu</a>
+            <a href="/admin/jenismenu/create" class="btn btn-primary">Tambah Jenis Menu</a>
         </div>
         <div class="card-body">
             <section class="section">
@@ -43,8 +43,8 @@
                                                     <td>{{ $loop->iteration }}</td>
                                                     <td>{{ $jm->jenis }}</td>
                                                     <td>
-                                                        <a href="/jenismenu/{{ $jm->id }}/edit" class="btn icon btn-primary"><i class="bi bi-pencil"></i></a>
-                                                        <form action="/jenismenu/{{ $jm->id }}" class="d-inline" method="post">
+                                                        <a href="/admin/jenismenu/{{ $jm->id }}/edit" class="btn icon btn-primary"><i class="bi bi-pencil"></i></a>
+                                                        <form action="/admin/jenismenu/{{ $jm->id }}" class="d-inline" method="post">
                                                             @csrf
                                                             @method('DELETE')
                                                             <button class="btn icon btn-danger"><i class="bi bi-x"></i></button>

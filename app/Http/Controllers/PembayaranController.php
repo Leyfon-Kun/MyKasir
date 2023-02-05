@@ -24,28 +24,37 @@ class PembayaranController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function search()
+    public function caribarang()
     {
         $menu = Menu::where('kode_menu', Request()->kode_menu)->first();
-        if(session('id_pembayaran')){
+        if (session('id_pembayaran')) {
 
             $cek = DB::table('detail_pembayaran')->where('id_pebayaran', session('id_pembayaran'))->where('id_menu', $menu->id)->first();
 
-            if($cek === null) {
+            if ($cek === null) {
                 DB::table('detail_pembayaran')->insert([
-                    'id_menu'=>$menu->id,
-                    'id_pembayaran'=>session('id_pembayaran'),
-                    'total_menu'=>'1',
-                    'subtotal'=>$menu->harga
+                    'id_menu' => $menu->id,
+                    'id_pembayaran' => session('id_pembayaran'),
+                    'total_menu' => '1',
+                    'subtotal' => $menu->harga
                 ]);
-            }else{
+            } else {
                 DB::table('detail_pembayaran')->where('id', $cek->id)->update([
-                    'total_menu'=>$cek->total_menu+1,
-                    'subtotal'=>($cek->subtotal+1)*$menu->harga
+                    'total_menu' => $cek->total_menu + 1,
+                    'subtotal' => ($cek->subtotal + 1) * $menu->harga
                 ]);
             }
-        }
+        } else {
+            $idpembayaran = Pembayaran::create();
+            DB::table('detail_pembayaran')->insert([
+                'id_menu' => $menu->id,
+                'id_pembayaran' => $idpembayaran,
+                'subtotal' => $menu->harga
+            ]);
 
+            session(['id_pembayaran' => $idpembayaran->id]);
+        }
+        return redirect()->back();
     }
 
     /**

@@ -29,7 +29,7 @@ class AuthController extends Controller
             return redirect('/dashboard');
         } else if (Auth::attempt($pegawai)) {
             return redirect('/dashboard');
-        } else return redirect()->back()->with('pesan', 'Username Atau Kata Sandi Salah');
+        } else return redirect()->back()->with('pesan', 'Username Atau Kata Sandi Tidak Dapat Di Temukan');
     }
 
     public function logout()

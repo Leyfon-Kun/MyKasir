@@ -17,7 +17,7 @@
             </div>
         </div>
     </div>
-    <form action="/jenismenu/{{ $jenismenu->id }}" method="POST">
+    <form action="/admin/jenismenu/{{ $jenismenu->id }}" method="POST">
         @method('put')
         @csrf
         <div class="card">

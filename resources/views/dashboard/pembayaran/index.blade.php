@@ -24,7 +24,7 @@
                     <div class="card-body px-4 py-4-5">
                         <div class="form-group">
                             <label for="basicInput">Nama Menu</label>
-                            <input type="text" name="jenis" value="" class="form-control" id="basicInput" placeholder="Jenis Menu">
+                            <input type="text" name="jenis" value="" class="form-control" id="basicInput" placeholder="Nama Menu">
                         </div>
                     </div>
                 </div>
@@ -33,12 +33,16 @@
                 <div class="card">
                     <div class="card-body px-4 py-4-5">
                         <div class="form-group">
+                            <label for="disabledInput">Total Harga</label>
+                            <input type="text" class="form-control" id="disabledInput" placeholder="Value" disabled="">
+                        </div>
+                        <div class="form-group">
                             <label for="basicInput">Bayar</label>
                             <input type="text" name="jenis" value="" class="form-control" id="basicInput" placeholder="Bayar">
                         </div>
                         <div class="form-group">
-                            <label for="disabledInput">Total Harga</label>
-                            <input type="text" class="form-control" id="disabledInput" placeholder="Total Harga" disabled="">
+                            <label for="disabledInput">Kembalian</label>
+                            <input type="text" class="form-control" id="disabledInput" placeholder="Value" disabled="">
                         </div>
                     </div>
                 </div>
@@ -63,7 +67,6 @@
                                                     <th>Nama Menu</th>
                                                     <th>Harga</th>
                                                     <th>Jumlah</th>
-                                                    <th>Total Harga</th>
                                                     <th>Aksi</th>
                                                 </tr>
                                             </thead>

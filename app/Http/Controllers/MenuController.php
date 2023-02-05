@@ -38,31 +38,31 @@ class MenuController extends Controller
      */
     public function store(Request $request)
     {
-       $request->validate([
-        'nama_menu' => 'required',
-        'stok' => 'required',
-        'harga' => 'required',
-        'id_jenis_menu' => 'required'
-        ],[
-        'nama_menu.required' => 'Harap Masukkan Nama Menu',
-        'stok.required' => 'Harap Masukkan Stok',
-        'harga.required' => 'Harap Masukkan Harga',
-        'id_jenis_menu.required' => 'Harap Tentukan Jenis Barang'
+        $request->validate([
+            'nama_menu' => 'required',
+            'stok' => 'required',
+            'harga' => 'required',
+            'id_jenis_menu' => 'required'
+        ], [
+            'nama_menu.required' => 'Harap Masukkan Nama Menu',
+            'stok.required' => 'Harap Masukkan Stok',
+            'harga.required' => 'Harap Masukkan Harga',
+            'id_jenis_menu.required' => 'Harap Tentukan Jenis Barang'
         ]);
 
-       $random = mt_rand(123452342, 999999999);
+        $random = mt_rand(123452342, 999999999);
 
-       $data = [
-        'nama_menu' => request()->nama_menu,
-        'kode_menu' => $random,
-        'stok' => request()->stok,
-        'harga' => request()->harga,
-        'id_jenis_menu' => request()->id_jenis_menu
-       ];
+        $data = [
+            'nama_menu' => request()->nama_menu,
+            'kode_menu' => $random,
+            'stok' => request()->stok,
+            'harga' => request()->harga,
+            'id_jenis_menu' => request()->id_jenis_menu
+        ];
 
-    //    @dd($data);
-       Menu::create($data);
-       return redirect('/menu');
+        //    @dd($data);
+        Menu::create($data);
+        return redirect('/admin/menu');
     }
 
     /**
@@ -86,7 +86,7 @@ class MenuController extends Controller
     {
         $jenismenu = JenisMenu::all();
         // $menu = Menu::all();
-        return view('dashboard.menu.edit', compact( 'menu', 'jenismenu'));
+        return view('dashboard.menu.edit', compact('menu', 'jenismenu'));
     }
 
     /**
@@ -103,7 +103,7 @@ class MenuController extends Controller
             'stok' => 'required',
             'harga' => 'required',
             'id_jenis_menu' => 'required'
-        ],[
+        ], [
             'nama_menu.required' => 'Harap Masukkan Nama Menu',
             'stok.required' => 'Harap Masukkan Stok',
             'harga.required' => 'Harap Masukkan Harga',
@@ -112,7 +112,7 @@ class MenuController extends Controller
 
         // @dd(Request()->except('_token'));
         $menu->update(Request()->except('_token'));
-        return redirect('/menu')->with('pesan', 'Menu Berhasi Di Edit');
+        return redirect('/admin/menu')->with('pesan', 'Menu Berhasil Di Edit');
     }
 
     /**
@@ -125,6 +125,6 @@ class MenuController extends Controller
     {
         $menu->delete();
         // @dd($menu);
-        return redirect('/menu')->with('pesan', "Menu Berhasil Di Hapus");
+        return redirect('/admin/menu')->with('pesan', "Menu Berhasil Di Hapus");
     }
 }

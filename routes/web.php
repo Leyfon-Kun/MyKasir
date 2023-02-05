@@ -33,12 +33,11 @@ Route::middleware(['auth'])->group(function () {
 
     Route::group(['prefix' => 'admin', 'middleware' => 'Role:admin'], function () {
         Route::resource('/users', UserController::class);
+        Route::resource('/menu', MenuController::class);
+        Route::resource('/jenismenu', JenisMenuController::class);
     });
 
     Route::resource('/dashboard', DashboardController::class);
     Route::resource('/detailpembayaran', DetailPembayaranController::class);
-    Route::resource('/jenismenu', JenisMenuController::class);
-    Route::resource('/menu', MenuController::class);
     Route::resource('/pembayaran', PembayaranController::class);
-
 });

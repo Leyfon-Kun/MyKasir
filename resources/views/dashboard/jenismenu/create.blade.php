@@ -17,7 +17,7 @@
             </div>
         </div>
     </div>
-    <form action="/jenismenu" method="POST">
+    <form action="/admin/jenismenu" method="POST">
         @csrf
         <div class="card">
             <div class="card-header">
