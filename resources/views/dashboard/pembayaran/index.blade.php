@@ -26,6 +26,9 @@
                             <label for="basicInput">Nama Menu</label>
                             <input type="text" name="jenis" value="" class="form-control" id="basicInput" placeholder="Nama Menu">
                         </div>
+                        <a href="#" class="btn icon btn-success">
+                            <i class="bi bi-cart"></i>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -44,6 +47,9 @@
                             <label for="disabledInput">Kembalian</label>
                             <input type="text" class="form-control" id="disabledInput" placeholder="Value" disabled="">
                         </div>
+                        <a href="#" class="btn icon btn-success">
+                            <i class="bi bi-cash"></i>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -70,8 +76,8 @@
                                                     <th>Aksi</th>
                                                 </tr>
                                             </thead>
-                                            {{-- <tbody>
-                                                @foreach ($ as $)
+                                            <tbody>
+                                                {{-- @foreach ($ as $)
                                                     <tr>
                                                         <td>{{ $loop->iteration }}</td>
                                                         <td>{{ $ }}</td>
