@@ -20,32 +20,39 @@
     <div class="page-content">
         <section class="row">
             <div class="col-4">
-                <div class="card">
-                    <div class="card-body px-4 py-4-5">
-                        <div class="form-group">
-                            <label for="basicInput">Nama Menu</label>
-                            <input type="text" name="jenis" value="" class="form-control" id="basicInput" placeholder="Nama Menu">
+                <form action="/cari" method="POST">
+                    @csrf
+                    <div class="card">
+                        <div class="card-body px-4 py-4-5">
+                            <div class="form-group">
+                                <label for="basicInput">Kode Menu</label>
+                                <input type="text" name="kode_menu" value="" class="form-control" id="basicInput"
+                                    placeholder="Kode Menu">
+                            </div>
+                            {{-- <button class="btn icon btn-success" type="button">
+                                    <i class="bi bi-cart"></i>
+                            </button> --}}
                         </div>
-                        <a href="#" class="btn icon btn-success">
-                            <i class="bi bi-cart"></i>
-                        </a>
                     </div>
-                </div>
+                </form>
             </div>
             <div class="col-8">
                 <div class="card">
                     <div class="card-body px-4 py-4-5">
                         <div class="form-group">
                             <label for="disabledInput">Total Harga</label>
-                            <input type="text" class="form-control" id="disabledInput" placeholder="Value" disabled="">
+                            <input type="text" class="form-control" id="disabledInput" value="{{ $total->total ?? '' }}"
+                                disabled="">
                         </div>
                         <div class="form-group">
                             <label for="basicInput">Bayar</label>
-                            <input type="text" name="jenis" value="" class="form-control" id="basicInput" placeholder="Bayar">
+                            <input type="text" name="jenis" value="" class="form-control" id="basicInput"
+                                placeholder="Bayar">
                         </div>
                         <div class="form-group">
                             <label for="disabledInput">Kembalian</label>
-                            <input type="text" class="form-control" id="disabledInput" placeholder="Value" disabled="">
+                            <input type="text" class="form-control" id="disabledInput" onkeyup="pembayarans(this)"
+                                disabled="">
                         </div>
                         <a href="#" class="btn icon btn-success">
                             <i class="bi bi-cash"></i>
@@ -77,22 +84,29 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                {{-- @foreach ($ as $)
+                                                @foreach ($cari as $c)
                                                     <tr>
                                                         <td>{{ $loop->iteration }}</td>
-                                                        <td>{{ $ }}</td>
-                                                        <td>{{ $ }}</td>
-                                                        <td>{{ $ }}</td>
-                                                        <td>{{ $ }}</td>
+                                                        <td>{{ $c->nama_menu }}</td>
+                                                        <td>Rp {{ number_format($c->harga) }}</td>
                                                         <td>
-                                                            <form action="/jenismenu/{{ $jm->id }}" class="d-inline" method="post">
+                                                            <form action="/updateJumlah/{{ $c->id }}" method="post">
                                                                 @csrf
-                                                                @method('DELETE')
-                                                                <button class="btn icon btn-danger"><i class="bi bi-x"></i></button>
+                                                                <input type="number" onkeyup="updateSubtotal(this)"
+                                                                    onfocusout="this.form.submit()" name="subtotal"
+                                                                    value="{{ $c->subtotal }}" id="">
+                                                            </form>
+                                                        </td>
+                                                        <td>
+                                                            <form action="/hapus/{{ $c->id }}" method="post">
+                                                                @csrf
+                                                                <button type="submit" class="btn icon btn-danger">
+                                                                    <i class="bi bi-x"></i>
+                                                                </button>
                                                             </form>
                                                         </td>
                                                     </tr>
-                                                @endforeach --}}
+                                                @endforeach
                                             </tbody>
                                         </table>
                                     </div>

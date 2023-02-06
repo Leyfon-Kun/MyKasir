@@ -29,6 +29,7 @@
                 </ul>
             </li>
         @endif
+        {{-- @if (auth()->user()->role == 'pegawai') --}}
         <li class="sidebar-item  has-sub">
             <a href="#" class='sidebar-link'>
                 <i class="bi bi-stack"></i>
@@ -43,6 +44,7 @@
                 </li>
             </ul>
         </li>
+        {{-- @endif --}}
         <li class="sidebar-title">Autentikasi</li>
         <li class="sidebar-item  ">
             <a href="/logout" class='sidebar-link'>

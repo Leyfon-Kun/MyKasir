@@ -37,7 +37,11 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('/jenismenu', JenisMenuController::class);
     });
 
+    //Point of sale
     Route::resource('/dashboard', DashboardController::class);
-    Route::resource('/detailpembayaran', DetailPembayaranController::class);
     Route::resource('/pembayaran', PembayaranController::class);
+    Route::post('/cari', [PembayaranController::class, 'caribarang']);
+    Route::post('/hapus/{id}', [PembayaranController::class, 'destroy']);
+    Route::post('/updateJumlah/{id}', [PembayaranController::class, 'updateJumlah']);
+    Route::resource('/detailpembayaran', DetailPembayaranController::class);
 });

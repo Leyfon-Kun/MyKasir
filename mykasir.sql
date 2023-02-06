@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Feb 03, 2023 at 04:24 AM
+-- Generation Time: Feb 06, 2023 at 04:51 AM
 -- Server version: 8.0.30
--- PHP Version: 7.4.19
+-- PHP Version: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -30,9 +30,9 @@ SET time_zone = "+00:00";
 CREATE TABLE `detail_pembayaran` (
   `id` int NOT NULL,
   `id_menu` int DEFAULT NULL,
-  `total_menu` int DEFAULT NULL,
   `subtotal` float DEFAULT NULL,
-  `id_pembayaran` int DEFAULT NULL
+  `id_pembayaran` int DEFAULT NULL,
+  `harga` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -75,7 +75,7 @@ CREATE TABLE `menu` (
 --
 
 INSERT INTO `menu` (`id`, `nama_menu`, `kode_menu`, `stok`, `harga`, `id_jenis_menu`) VALUES
-(3, 'Potabee', 843323523, 50, 8000, 13);
+(1, 'Ayam Geprek', 820124424, 4, 5000, 12);
 
 -- --------------------------------------------------------
 
@@ -86,8 +86,8 @@ INSERT INTO `menu` (`id`, `nama_menu`, `kode_menu`, `stok`, `harga`, `id_jenis_m
 CREATE TABLE `pembayaran` (
   `id` int NOT NULL,
   `id_kasir` int DEFAULT NULL,
-  `total_pembayaran` float DEFAULT NULL,
-  `total_kembalian` float DEFAULT NULL,
+  `pembayaran` float DEFAULT NULL,
+  `kembalian` float DEFAULT NULL,
   `total_harga` float DEFAULT NULL,
   `tgl_pembayaran` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -112,8 +112,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `nama`, `username`, `password`, `role`) VALUES
 (8, 'Katoh', 'admin', '$2y$10$h/26mzBYX85yred6SVu71u25HdOHNji2/Um5PyKjXUUieMd5ZE/.W', 'admin'),
-(9, 'Hengky', 'pegawai', '$2y$10$pmRLnlOAffEB3EMJGbZX5eBNvj2J7IzLLqlJbh7WvdS.qqjBCwdqq', 'pegawai'),
-(14, 'usdin', 'admin', '$2y$10$XjZImiaa8qn7EJYogHPPqO/1FoBgrtuLlePVM/ipdc3lqAkG5S.E2', 'pegawai');
+(9, 'Hengky', 'pegawai', '$2y$10$pmRLnlOAffEB3EMJGbZX5eBNvj2J7IzLLqlJbh7WvdS.qqjBCwdqq', 'pegawai');
 
 --
 -- Indexes for dumped tables
@@ -161,7 +160,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `detail_pembayaran`
 --
 ALTER TABLE `detail_pembayaran`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `jenis_menu`
@@ -173,7 +172,7 @@ ALTER TABLE `jenis_menu`
 -- AUTO_INCREMENT for table `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `pembayaran`
