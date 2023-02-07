@@ -27,7 +27,7 @@
                             <div class="form-group">
                                 <label for="basicInput">Kode Menu</label>
                                 <input type="number" name="kode_menu" value="" class="form-control" id="basicInput"
-                                    placeholder="Kode Menu">
+                                    placeholder="Cari Kode Menu">
                             </div>
                             {{-- <button class="btn icon btn-success" type="button">
                                     <i class="bi bi-cart"></i>
@@ -41,8 +41,8 @@
                         <div class="card-body px-4 py-4-5">
                             <div class="form-group">
                                 <label for="basicInput">Nama Menu</label>
-                                <input type="text" name="kode_menu" value="" class="form-control" id="basicInput"
-                                    placeholder="Kode Menu">
+                                <input type="text" name="nama_menu" value="" class="form-control" id="basicInput"
+                                    placeholder="Cari Nama Menu">
                             </div>
                             {{-- <button class="btn icon btn-success" type="button">
                                     <i class="bi bi-cart"></i>
@@ -61,7 +61,7 @@
                         </div>
                         <div class="form-group">
                             <label for="basicInput">Bayar</label>
-                            <input type="text" name="jenis" value="" class="form-control" id="basicInput"
+                            <input type="text" name="jenis" value="{{ $total->total ?? '' }}" class="form-control" id="basicInput"
                                 placeholder="Bayar">
                         </div>
                         <div class="form-group">

@@ -67,6 +67,37 @@ class PembayaranController extends Controller
         return redirect()->back();
     }
 
+    public function carinamabarang()
+    {
+        $menu = Menu::where('nama_menu', Request()->nama_menu)->first();
+        if (session('id_pembayaran')) {
+            $cek = DB::table('detail_pembayaran')->where('id_pembayaran')->where('id_menu', $menu->id)->first();
+
+            if ($cek === null) {
+                DB::table('detail_pembayaran')->insert([
+                    'id_menu' => $menu->id,
+                    // 'id_pembayaran' => session('id_pembayaran'),
+                    'subtotal' => '1',
+                    'harga' => $menu->harga
+                ]);
+            } else {
+                DB::table('detail_pembayaran')->where('id', $cek->id)->update([
+                    'subtotal' => $cek->subtotal + 1,
+                    'harga' => ($cek->harga) + $menu->harga
+                ]);
+            }
+        } else {
+            $idpembayaran = Pembayaran::create();
+            DB::table('detail_pembayaran')->insert([
+                'id_menu' => $menu->id,
+                'id_pembayaran' => $idpembayaran->id,
+                'harga' => $menu->harga
+            ]);
+            session(['id_pembayaran' => $idpembayaran->id]);
+        }
+        return redirect()->back();
+    }
+
     public function updateJumlah($id)
     {
         $data = DB::table('detail_pembayaran')->where('id', $id)->first();
