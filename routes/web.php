@@ -40,7 +40,8 @@ Route::middleware(['auth'])->group(function () {
     //Point of sale
     Route::resource('/dashboard', DashboardController::class);
     Route::resource('/pembayaran', PembayaranController::class);
-    Route::post('/cari', [PembayaranController::class, 'caribarang']);
+    Route::post('/carikode', [PembayaranController::class, 'carikodebarang']);
+    Route::post('/carinama', [PembayaranController::class, 'carinamabarang']);
     Route::post('/hapus/{id}', [PembayaranController::class, 'destroy']);
     Route::post('/updateJumlah/{id}', [PembayaranController::class, 'updateJumlah']);
     Route::resource('/detailpembayaran', DetailPembayaranController::class);

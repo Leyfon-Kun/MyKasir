@@ -20,12 +20,27 @@
     <div class="page-content">
         <section class="row">
             <div class="col-4">
-                <form action="/cari" method="POST">
+                <form action="/carikode" method="POST">
                     @csrf
                     <div class="card">
                         <div class="card-body px-4 py-4-5">
                             <div class="form-group">
                                 <label for="basicInput">Kode Menu</label>
+                                <input type="number" name="kode_menu" value="" class="form-control" id="basicInput"
+                                    placeholder="Kode Menu">
+                            </div>
+                            {{-- <button class="btn icon btn-success" type="button">
+                                    <i class="bi bi-cart"></i>
+                            </button> --}}
+                        </div>
+                    </div>
+                </form>
+                <form action="/carinama" method="POST">
+                    @csrf
+                    <div class="card">
+                        <div class="card-body px-4 py-4-5">
+                            <div class="form-group">
+                                <label for="basicInput">Nama Menu</label>
                                 <input type="text" name="kode_menu" value="" class="form-control" id="basicInput"
                                     placeholder="Kode Menu">
                             </div>

@@ -35,7 +35,7 @@ class PembayaranController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function caribarang()
+    public function carikodebarang()
     {
         $menu = Menu::where('kode_menu', Request()->kode_menu)->first();
         if (session('id_pembayaran')) {
