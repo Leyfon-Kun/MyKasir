@@ -51,12 +51,11 @@
                                                     <td>{{ $p->total_harga }}</td>
                                                     <td>{{ $p->created_at }}</td>
                                                     <td>
-                                                        <form action="/hapus/{{ $p->id }}" class="d-inline"
-                                                            method="post">
+                                                        <form action="/hapus/{{ $p->id }}" method="post">
                                                             @csrf
-                                                            @method('DELETE')
-                                                            <button class="btn icon btn-danger"><i
-                                                                    class="bi bi-x"></i></button>
+                                                            <button type="submit" class="btn icon btn-danger">
+                                                                <i class="bi bi-x"></i>
+                                                            </button>
                                                         </form>
                                                     </td>
                                                 </tr>
