@@ -135,6 +135,15 @@ class PembayaranController extends Controller
         return view('dashboard.detailpembayaran.index', compact('data'));
     }
 
+    // public function cetakStruke()
+    // {
+    //     $barang = DetailPembayaran::where("id_pembayaran", session('id_pembayaran'))->get();
+    //     $total_item = DetailPembayaran::where("id_pembayaran", session('id_pembayaran'))->sum("qty");
+    //     $pembayaran = pembayaran::find(session('id_pembayaran'));
+    //     $bio = DB::table('bio')->first();
+    //     return view("transaksi.struk", compact('pembayaran', 'barang', 'total_item', 'bio'));
+    // }
+
     public function destroy($id)
     {
         Pembayaran::find($id)->delete();
