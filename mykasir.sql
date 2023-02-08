@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Feb 06, 2023 at 04:51 AM
+-- Generation Time: Feb 08, 2023 at 09:10 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -75,7 +75,8 @@ CREATE TABLE `menu` (
 --
 
 INSERT INTO `menu` (`id`, `nama_menu`, `kode_menu`, `stok`, `harga`, `id_jenis_menu`) VALUES
-(1, 'Ayam Geprek', 820124424, 4, 5000, 12);
+(1, 'Ayam Geprek', 820124424, -4, 5000, 12),
+(2, 'Nasi Padang', 703003941, 89, 15000, 11);
 
 -- --------------------------------------------------------
 
@@ -89,7 +90,8 @@ CREATE TABLE `pembayaran` (
   `pembayaran` float DEFAULT NULL,
   `kembalian` float DEFAULT NULL,
   `total_harga` float DEFAULT NULL,
-  `tgl_pembayaran` datetime DEFAULT NULL
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -160,7 +162,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `detail_pembayaran`
 --
 ALTER TABLE `detail_pembayaran`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT for table `jenis_menu`
@@ -172,13 +174,13 @@ ALTER TABLE `jenis_menu`
 -- AUTO_INCREMENT for table `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `pembayaran`
 --
 ALTER TABLE `pembayaran`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `users`
