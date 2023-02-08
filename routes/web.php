@@ -44,5 +44,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/carinama', [PembayaranController::class, 'carinamabarang']);
     Route::post('/hapus/{id}', [PembayaranController::class, 'destroy']);
     Route::post('/updateJumlah/{id}', [PembayaranController::class, 'updateJumlah']);
+    Route::post('/transaksi', [PembayaranController::class, 'store']);
+    Route::get('/berhasil', [pembayaranController::class, 'berhasil']);
     Route::resource('/detailpembayaran', DetailPembayaranController::class);
 });

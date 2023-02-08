@@ -4,37 +4,29 @@ namespace App\Http\Controllers;
 
 use App\Models\Menu;
 use App\Models\Pembayaran;
-use Illuminate\Http\Request;
 use App\Models\DetailPembayaran;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class PembayaranController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
+
         $menu = DB::table('menu')
             ->select('jenis', 'menu.*')
             ->join('jenis_menu', 'menu.id_jenis_menu', 'jenis_menu.id')
             ->get();
         $cari = DB::table('detail_pembayaran')
             ->select('nama_menu', 'menu.harga', 'kode_menu', 'subtotal', 'detail_pembayaran.harga as total', 'detail_pembayaran.id')
-            // ->where('id_pembayaran', session('id_pembayaran'))
+            ->where('id_pembayaran', session('id_pembayaran'))
             ->join('menu', 'detail_pembayaran.id_menu', 'menu.id')
             ->get();
-        $total = DB::table('detail_pembayaran')->selectRaw("sum(harga) as total")->where('id_pembayaran')->groupBy('id_pembayaran')->first();
+        $total = DB::table('detail_pembayaran')->selectRaw("sum(harga) as total")->where('id_pembayaran', session('id_pembayaran'))->groupBy('id_pembayaran')->first();
         return view('dashboard.pembayaran.index', compact('cari', 'menu', 'total'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function carikodebarang()
     {
         $menu = Menu::where('kode_menu', Request()->kode_menu)->first();
@@ -83,7 +75,7 @@ class PembayaranController extends Controller
             } else {
                 DB::table('detail_pembayaran')->where('id', $cek->id)->update([
                     'subtotal' => $cek->subtotal + 1,
-                    'harga' => ($cek->harga) + $menu->harga
+                    'harga' => ($cek->subtotal + 1) * $menu->harga
                 ]);
             }
         } else {
@@ -91,6 +83,7 @@ class PembayaranController extends Controller
             DB::table('detail_pembayaran')->insert([
                 'id_menu' => $menu->id,
                 'id_pembayaran' => $idpembayaran->id,
+                'subtotal' => '1',
                 'harga' => $menu->harga
             ]);
             session(['id_pembayaran' => $idpembayaran->id]);
@@ -111,78 +104,40 @@ class PembayaranController extends Controller
         return redirect()->back();
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        $id = pembayaran::where('id', session('id_pembayaran'))->update(Request()->except('_token'));
+        Request()->validate([
+            'kembalian' => 'required',
+            'pembayaran' => 'required',
+            'total_harga' => 'required'
+        ]);
+        if (Request()->pembayaran < Request()->total_harga) {
+            return redirect()->back()->with('eror', 'Pembayaran Kurang');
+        }
+
+        $data = array_merge(Request()->except('_token'), ['id_kasir' => auth()->id()]);
+        $id = Pembayaran::where('id', session('id_pembayaran'))->update($data);
         $data = DetailPembayaran::where('id_pembayaran', session('id_pembayaran'))->get();
         foreach ($data as $d) {
             $produk = Menu::find($d->id_menu);
-            $produk->stok -= $d->qty;
-            if ($produk->stok < $d->qty) {
-                return redirect()->back()->with('error', 'Stok Tidak Mencukupi');
-            } elseif ($produk->stok === null) {
-                return redirect()->back()->with('error', 'Stok Sudah Habis');
-            } else {
-                $produk->update();
-            }
+            $produk->stok -= $d->subtotal;
+            $produk->update();
         }
-        return redirect("/sukses");
+        session(['selesai' => true]);
+        return redirect('/berhasil');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Pembayaran  $pembayaran
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Pembayaran $pembayaran)
+    public function berhasil()
     {
-        //
+        $data = Pembayaran::where('id', session('id_pembayaran'))->get();
+        session(['id_pembayaran' => '']);
+
+        return view('dashboard.detailpembayaran.index', compact('data'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Pembayaran  $pembayaran
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Pembayaran $pembayaran)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Pembayaran  $pembayaran
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Pembayaran $pembayaran)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Pembayaran  $pembayaran
-     * @return \Illuminate\Http\Response
-     */
-    // public function destroy(Pembayaran $pembayaran, $id)
-    // {
-    //     DetailPembayaran::find($pembayaran)->delete();
-    //     return redirect()->back();
-    // }
     public function destroy($id)
     {
-        DetailPembayaran::find($id)->delete();
+        Pembayaran::find($id)->delete();
         return redirect()->back();
     }
 }

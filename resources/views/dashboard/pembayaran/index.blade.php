@@ -10,7 +10,7 @@
             <div class="col-12 col-md-6 order-md-2 order-first">
                 <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Pembayaran</li>
                     </ol>
                 </nav>
@@ -52,28 +52,30 @@
                 </form>
             </div>
             <div class="col-8">
-                <div class="card">
-                    <div class="card-body px-4 py-4-5">
-                        <div class="form-group">
-                            <label for="disabledInput">Total Harga</label>
-                            <input type="text" class="form-control" id="disabledInput" value="{{ $total->total ?? '' }}"
-                                disabled="">
+                <form action="/transaksi" method="post">
+                    @csrf
+                    <div class="card">
+                        <div class="card-body px-4 py-4-5">
+                            <div class="form-group">
+                                <label for="disabledInput">Total Harga</label>
+                                <input type="number" name="total_harga" class="form-control" readonly id="totalrp"
+                                    value="{{ $total->total ?? '' }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="basicInput">Bayar</label>
+                                <input type="number" name="pembayaran" onkeyup="pembayarans(this)" class="form-control"
+                                    id="bayarrp" placeholder="Bayar">
+                            </div>
+                            <div class="form-group">
+                                <label for="disabledInput">Kembalian</label>
+                                <input type="number" name="kembalian" class="form-control" readonly id="id">
+                            </div>
+                            <button class="btn icon btn-success" type="submit">
+                                <i class="bi bi-cash"></i>
+                            </button>
                         </div>
-                        <div class="form-group">
-                            <label for="basicInput">Bayar</label>
-                            <input type="text" name="jenis" value="{{ $total->total ?? '' }}" class="form-control" id="basicInput"
-                                placeholder="Bayar">
-                        </div>
-                        <div class="form-group">
-                            <label for="disabledInput">Kembalian</label>
-                            <input type="text" class="form-control" id="disabledInput" onkeyup="pembayarans(this)"
-                                disabled="">
-                        </div>
-                        <a href="#" class="btn icon btn-success">
-                            <i class="bi bi-cash"></i>
-                        </a>
                     </div>
-                </div>
+                </form>
             </div>
         </section>
         <div class="card">
@@ -132,5 +134,21 @@
                 </section>
             </div>
         </div>
+        <script>
+            let total = '{{ $total->total ?? '' }}'
+
+            let kembalian = document.querySelector('#id');
+
+            function updateSubtotal(el) {
+                let val = el.value
+                if (val < 1) {
+                    el.value = 1
+                }
+            }
+
+            function pembayarans(el) {
+                kembalian.value = el.value - total
+            }
+        </script>
     </div>
 @endsection
