@@ -16,51 +16,52 @@
     <link rel="shortcut icon" href="{{ asset('template') }}/assets/images/favicon.svg" type="image/x-icon">
 </head>
 <body>
-    <div id="app">
-        <div id="sidebar" class="active">
-            <div class="sidebar-wrapper active">
-                <div class="sidebar-header">
-                    <div class="d-flex justify-content-between">
-                        <div class="logo">
-                            <a href="/dashboard"><img src="{{ asset('template') }}/assets/images/logo/logo.png"
-                                    alt="Logo" srcset=""></a>
-                        </div>
-                        <div class="toggler">
-                            <a href="#" class="sidebar-hide d-xl-none d-block"><i
-                                    class="bi bi-x bi-middle"></i></a>
+    @include('sweetalert::alert')
+        <div id="app">
+            <div id="sidebar" class="active">
+                <div class="sidebar-wrapper active">
+                    <div class="sidebar-header">
+                        <div class="d-flex justify-content-between">
+                            <div class="logo">
+                                <a href="/dashboard"><img src="{{ asset('template') }}/assets/images/logo/logo.png"
+                                        alt="Logo" srcset=""></a>
+                            </div>
+                            <div class="toggler">
+                                <a href="#" class="sidebar-hide d-xl-none d-block"><i
+                                        class="bi bi-x bi-middle"></i></a>
+                            </div>
                         </div>
                     </div>
+
+                    @include('layout.sidebar')
+
                 </div>
-
-                @include('layout.sidebar')
-
             </div>
-        </div>
-        <div id="main">
-            <header class="mb-3">
-                <a href="#" class="burger-btn d-block d-xl-none">
-                    <i class="bi bi-justify fs-3"></i>
-                </a>
-            </header>
-            <div class="page-heading">
+            <div id="main">
+                <header class="mb-3">
+                    <a href="#" class="burger-btn d-block d-xl-none">
+                        <i class="bi bi-justify fs-3"></i>
+                    </a>
+                </header>
+                <div class="page-heading">
 
-                <!-- Main Content -->
-                @yield('content')
+                    <!-- Main Content -->
+                    @yield('content')
 
-            </div>
-            <footer>
-                <div class="footer clearfix mb-0 text-muted">
-                    <div class="float-start">
-                        <p>Copyright &copy; 2021 Mazer</p>
+                </div>
+                <footer>
+                    <div class="footer clearfix mb-0 text-muted">
+                        <div class="float-start">
+                            <p>Copyright &copy; 2021 Mazer</p>
+                        </div>
                     </div>
-                </div>
-            </footer>
+                </footer>
+            </div>
         </div>
-    </div>
-    <script src="{{ asset('template') }}/assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-    <script src="{{ asset('template') }}/assets/js/bootstrap.bundle.min.js"></script>
+        <script src="{{ asset('template') }}/assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+        <script src="{{ asset('template') }}/assets/js/bootstrap.bundle.min.js"></script>
 
-    <script src="{{ asset('template') }}/assets/js/mazer.js"></script>
+        <script src="{{ asset('template') }}/assets/js/mazer.js"></script>
 </body>
 
 </html>

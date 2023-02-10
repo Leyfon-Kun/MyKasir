@@ -44,7 +44,7 @@ class JenisMenuController extends Controller
 
         JenisMenu::create($request->except('_token'));
         // @dd($request);
-        return redirect('/admin/jenismenu');
+        return redirect('/admin/jenismenu')->with('success', 'Jenis Menu Berhasil Di Tambahkan');
     }
 
     /**
@@ -85,7 +85,7 @@ class JenisMenuController extends Controller
         ]);
 
         $jenismenu->update($request->except('_token'));
-        return redirect('/admin/jenismenu');
+        return redirect('/admin/jenismenu')->with('success', 'Jenis Menu Berhasil Di Edit');
     }
 
     /**
@@ -98,6 +98,6 @@ class JenisMenuController extends Controller
     {
         $jenismenu->delete();
         // @dd($jenismenu);
-        return redirect('/admin/jenismenu')->with('pesan', "Menu Berhasil Di Hapus");
+        return redirect('/admin/jenismenu')->with('success', 'Jenis Menu Berhasil Di Hapus');
     }
 }

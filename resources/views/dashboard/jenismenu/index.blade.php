@@ -47,7 +47,11 @@
                                                         <form action="/admin/jenismenu/{{ $jm->id }}" class="d-inline" method="post">
                                                             @csrf
                                                             @method('DELETE')
-                                                            <button class="btn icon btn-danger"><i class="bi bi-x"></i></button>
+                                                            <button class="btn icon btn-danger"
+                                                            data-confirm="Yakin?|Data yang di hapus tidak dapat di kembalikan?"
+                                                            data-confirm-yes="document.querySelector('#delete{{ $jm->id }}').submit()">
+                                                            <i class="bi bi-x"></i>
+                                                            </button>
                                                         </form>
                                                     </td>
                                                 </tr>

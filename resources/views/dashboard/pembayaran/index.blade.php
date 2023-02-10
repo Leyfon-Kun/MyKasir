@@ -147,7 +147,7 @@
             }
 
             function pembayarans(el) {
-                kembalian.value = el.value - total
+                Kembalian.value = (value) - (total)
             }
         </script>
     </div>

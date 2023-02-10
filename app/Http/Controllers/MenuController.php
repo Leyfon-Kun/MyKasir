@@ -62,7 +62,7 @@ class MenuController extends Controller
 
         //    @dd($data);
         Menu::create($data);
-        return redirect('/admin/menu');
+        return redirect('/admin/menu')->with('success', 'Menu Berhasil Di Tambahkan');
     }
 
     /**
@@ -112,7 +112,7 @@ class MenuController extends Controller
 
         // @dd(Request()->except('_token'));
         $menu->update(Request()->except('_token'));
-        return redirect('/admin/menu')->with('pesan', 'Menu Berhasil Di Edit');
+        return redirect('/admin/menu')->with('success', 'Menu Berhasil Di Edit');
     }
 
     /**
@@ -125,6 +125,6 @@ class MenuController extends Controller
     {
         $menu->delete();
         // @dd($menu);
-        return redirect('/admin/menu')->with('pesan', "Menu Berhasil Di Hapus");
+        return redirect('/admin/menu')->with('success', 'Menu Berhasil Di Hapus');
     }
 }

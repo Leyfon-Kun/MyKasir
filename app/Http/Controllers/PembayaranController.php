@@ -36,7 +36,7 @@ class PembayaranController extends Controller
             if ($cek === null) {
                 DB::table('detail_pembayaran')->insert([
                     'id_menu' => $menu->id,
-                    // 'id_pembayaran' => session('id_pembayaran'),
+                    'id_pembayaran' => session('id_pembayaran'),
                     'subtotal' => '1',
                     'harga' => $menu->harga
                 ]);
@@ -94,6 +94,11 @@ class PembayaranController extends Controller
     public function updateJumlah($id)
     {
         $data = DB::table('detail_pembayaran')->where('id', $id)->first();
+        $menu = DB::table('menu')->where('id', $data->id_menu)->first();
+
+        if ($menu->stok < request()->subtotal) {
+            return redirect()->back()->with('eror', 'stok tidak mencukupi');
+        }
 
         $harga = $data->harga / $data->subtotal;
 
@@ -147,6 +152,6 @@ class PembayaranController extends Controller
     public function destroy($id)
     {
         DetailPembayaran::find($id)->delete();
-        return redirect()->back();
+        return redirect()->back()->with('toast_success', 'Pembayaran Berhasil Di Hapus');
     }
 }
