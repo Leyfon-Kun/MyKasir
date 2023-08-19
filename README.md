@@ -1,1 +1,1 @@
-## Aplikasi Kasir Berbasis Web Not Done
+## Aplikasi Kasir Berbasis Web (Not Done)
